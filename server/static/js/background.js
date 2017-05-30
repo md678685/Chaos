@@ -235,6 +235,6 @@ function wndsize(){
 	return {width:w,height:h};	
 }
 
-window.keydown = function(event) {
+document.onkeydown = function(event) {
     if (event.keyCode == 65) changeAngle(Math.round(Math.random() * 16 * 22.5) + 20);
 }
