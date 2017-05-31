@@ -19,10 +19,27 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                margin: 0;
             }
 
-            body > p:first-child {
-                font-size: x-large;
+            body > p#code {
+                font-size: 96pt;
+                margin: 0px;
+            }
+
+            body > p#message {
+                font-size: 20pt;
+            }
+
+            body > p > a, body > p > a:visited {
+                color: #2f2f2f;
+                transition: color 200ms ease;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            body > p > a:hover, body > p > a:active {
+                color: #404040;
             }
 
             body > p {
