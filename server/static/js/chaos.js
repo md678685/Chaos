@@ -130,12 +130,12 @@ document.getElementById("voters").onclick = () => {
 };
 
 document.getElementById("main").onclick = () => {
-    if (document.getElementById("main").classList.contains('inactive')) {
+    if (document.getElementById("main").classList.contains("inactive")) {
         document.getElementById("main").classList.add("active");
         document.getElementById("voters").classList.add("inactive");
         document.getElementById("voters").classList.remove("active");
         document.getElementById("main").classList.remove("inactive");
-  }
+    }
 };
 
 /** LOAD VOTERS LIST */
