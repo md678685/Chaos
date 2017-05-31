@@ -9,4 +9,4 @@ cache: pip
 script:
   - flake8
   - python -m unittest discover -p "*_test.py"
-  - eslint --env browser -c airbnb --plugin jquery --rule 'quotes: [error, double]' --rule 'indent: [error, 4]' ./server/static/js/ 
+  - "eslint --env browser -c airbnb --plugin jquery --rule 'quotes: [error, double]' --rule 'indent: [error, 4]' ./server/static/js/"
