@@ -11,4 +11,4 @@ cache: pip
 script:
   - flake8
   - python -m unittest discover -p "*_test.py"
-  - "eslint -c ./server/static/js/"
+  - "eslint ./server/static/js/"
