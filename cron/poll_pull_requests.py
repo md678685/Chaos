@@ -51,7 +51,7 @@ def poll_pull_requests(api):
         meritocracy = top_voters | top_contributors
         __log.info("generated meritocracy: " + str(meritocracy))
 
-        with open('server/meritocracy.json', 'r+') as mfp:
+        with open('server/meritocracy.json', 'w') as mfp:
             json.dump(meritocracy, mfp)
 
         needs_update = False
