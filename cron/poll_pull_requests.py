@@ -30,12 +30,6 @@ def poll_pull_requests(api):
         # file already exists, which is what we want
         pass
 
-    try:
-        mfp = open('server/meritocracy.json', 'x')
-        mfp.close()
-    except:
-        pass
-
     with open('server/voters.json', 'r+') as fp:
         total_votes = {}
         fs = fp.read()
