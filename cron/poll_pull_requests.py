@@ -30,6 +30,12 @@ def poll_pull_requests(api):
         # file already exists, which is what we want
         pass
 
+    try:
+        mfp = open('server/meritocracy.json', 'x')
+        mfp.close()
+    except:
+        pass
+
     with open('server/voters.json', 'r+') as fp:
         total_votes = {}
         fs = fp.read()
@@ -44,6 +50,9 @@ def poll_pull_requests(api):
         top_voters = set([user.lower() for user in top_voters[:settings.MERITOCRACY_TOP_VOTERS]])
         meritocracy = top_voters | top_contributors
         __log.info("generated meritocracy: " + str(meritocracy))
+
+        with open('server/meritocracy.json', 'r+') as mfp:
+            json.dump(meritocracy, mfp)
 
         needs_update = False
         for pr in prs:
