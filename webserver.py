@@ -18,7 +18,7 @@ def get_voters(amount: hug.types.number = 20):
     try:
         voters = sorted(json.loads(
             linecache.getline("/root/workspace/Chaos/server/voters.json", 1)).items(),
-            key=lambda x: x[1])
+            key=lambda x: x[1], reverse=True)
         if amount > 0:
             voters = voters[:amount]
         return {x[0]: x[1] for x in voters}
