@@ -9,11 +9,11 @@ index_content = open("/root/workspace/Chaos/server/index.html", "r").read()
 
 
 @hug.get("/", output=hug.output_format.html)
-def get_index():
+def render_index():
     return index_content
 
 
-@hug.get("/voters", examples=["amount=20", "amount=0"])
+@hug.get("/api/voters", examples=["amount=20", "amount=0"])
 def get_voters(amount: hug.types.number = 20):
     try:
         voters = sorted(json.loads(
@@ -26,7 +26,7 @@ def get_voters(amount: hug.types.number = 20):
         __log.exception("Failed to read voters!")
 
 
-@hug.get("/meritocracy", examples=["amount=5", "amount=0"])
+@hug.get("/api/meritocracy", examples=["amount=5", "amount=0"])
 def get_meritocracy(amount: hug.types.number = 20):
     try:
         meritocracy = json.loads(
