@@ -8,8 +8,12 @@ server {
     root /root/workspace/Chaos/server;
     index index.html index.htm;
 
-    location / {
+    error_page 400 403 404 407 500 502 503 504 /api/errorpage?status=$status;
+
+    location /api {
         include uwsgi_params;
         uwsgi_pass 127.0.0.1:8085;
+        uwsgi_param SCRIPT_NAME /api;
+        uwsgi_modifier1 30;
     }
 }
