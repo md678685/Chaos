@@ -2,15 +2,29 @@ import hug
 import json
 import linecache
 import logging
+from http import server
 
 
 __log = logging.getLogger("webserver")
+responses = server.BaseHTTPRequestHandler.responses
+
 index_content = open("/root/workspace/Chaos/server/index.html", "r").read()
+errorpage_content = open("/root/workspace/Chaos/server/error.html", "r").read()
 
 
 @hug.get("/", output=hug.output_format.html)
 def render_index():
     return index_content
+
+
+@hug.get("/api/errorpage", output=hug.output_format.html)
+def render_error(code: hug.types.number = 500):
+    status = responses[code]
+    return errorpage_content % {
+        "code": code,
+        "message": status[0],
+        "explain": status[1]
+    }
 
 
 @hug.get("/api/voters", examples=["amount=20", "amount=0"])
