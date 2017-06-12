@@ -31,6 +31,6 @@ def get_self_urn():
     # we're not in a git repo, or we have no remotes, so just assume a sensible
     # default
     else:
-        urn = "chaosbot/chaos"
+        urn = "dbpokorny/chaos"
 
     return urn

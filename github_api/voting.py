@@ -2,7 +2,6 @@ import arrow
 from emoji import demojize
 
 from github_api.misc import dynamic_voting_window
-from . import prs
 from . import comments
 from . import users
 from . import repos
@@ -40,6 +39,7 @@ def get_votes(api, urn, pr):
 def get_pr_comment_votes_all(api, urn, pr_num):
     """ yields votes via comments and votes via reactions on comments for a
     given pr """
+    from . import prs
     for comment in prs.get_pr_comments(api, urn, pr_num):
         comment_owner = comment["user"]["login"]
 
@@ -75,6 +75,7 @@ def get_pr_comment_votes_all(api, urn, pr_num):
 def get_pr_reaction_votes(api, urn, pr_num):
     """ yields reaction votes to a pr-comment.  very similar to getting
     reactions from comments on the pr """
+    from . import prs
     reactions = prs.get_reactions_for_pr(api, urn, pr_num)
     for reaction in reactions:
         reaction_owner = reaction["user"]["login"]
@@ -97,6 +98,7 @@ def get_comment_reaction_votes(api, urn, comment_id):
 def get_pr_review_votes(api, urn, pr_num):
     """ votes made through
     https://help.github.com/articles/about-pull-request-reviews/ """
+    from . import prs
     for review in prs.get_pr_reviews(api, urn, pr_num):
         state = review["state"]
         if state in ("APPROVED", "DISMISSED"):

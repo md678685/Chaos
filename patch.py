@@ -14,6 +14,7 @@ from memoize import memoize
 from memoize.backends import json_backend
 import github_api.voting
 import github_api.repos
+import github_api.prs
 
 
 def decorate(fn, dec):

@@ -46,7 +46,7 @@ class API(object):
 
     def __init__(self, user, pat):
         self._auth = HTTPBasicAuth(user, pat)
-        self._remaining = math.inf
+        self._remaining = float("Inf")
         self._reset = 0
 
     def __call__(self, method, path, **kwargs):

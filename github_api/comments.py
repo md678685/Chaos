@@ -1,5 +1,4 @@
 import settings
-from . import prs
 
 
 def get_all_issue_comments(api, urn):
@@ -34,6 +33,7 @@ def get_reactions_for_comment(api, urn, comment_id):
 
 
 def leave_reject_comment(api, urn, pr, votes, total, threshold):
+    from . import prs
     votes_summary = prs.formatted_votes_summary(votes, total, threshold)
     body = """
 :no_good: PR rejected {summary}.
@@ -44,6 +44,7 @@ Open a new PR to restart voting.
 
 
 def leave_accept_comment(api, urn, pr, sha, votes, total, threshold):
+    from . import prs
     votes_summary = prs.formatted_votes_summary(votes, total, threshold)
     body = """
 :ok_woman: PR passed {summary}.
