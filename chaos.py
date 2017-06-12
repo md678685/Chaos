@@ -91,8 +91,6 @@ def main():
                            " - starting up and entering event loop",
                            api_twitter.GetApi())
 
-    os.system("pkill uwsgi")
-
     # Schedule all cron jobs to be run
     cron.schedule_jobs(api, api_twitter)
 
