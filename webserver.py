@@ -14,16 +14,6 @@ index_content = open("/root/workspace/Chaos/server/index.html", "r").read()
 errorpage_content = open("/root/workspace/Chaos/server/error.html", "r").read()
 
 
-@hug.static("/")
-def get_static():
-    return "/root/workspace/Chaos/server/",
-
-
-@hug.get("/", output=hug.output_format.html)
-def render_index():
-    return index_content
-
-
 @hug.get("/api/errorpage", output=hug.output_format.html)
 def render_error(code: hug.types.number = 500):
     status = responses[code]
