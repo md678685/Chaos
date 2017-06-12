@@ -93,13 +93,6 @@ def main():
 
     os.system("pkill uwsgi")
 
-    subprocess.Popen(["/root/.virtualenvs/chaos/bin/uwsgi",
-                      "--socket", "127.0.0.1:8085",
-                      "--wsgi-file", "webserver.py",
-                      "--callable", "__hug_wsgi__",
-                      "--check-static", "/root/workspace/Chaos/server/",
-                      "--daemonize", "/root/workspace/Chaos/log/uwsgi.log"])
-
     # Schedule all cron jobs to be run
     cron.schedule_jobs(api, api_twitter)
 
