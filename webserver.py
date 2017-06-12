@@ -12,6 +12,11 @@ index_content = open("/root/workspace/Chaos/server/index.html", "r").read()
 errorpage_content = open("/root/workspace/Chaos/server/error.html", "r").read()
 
 
+@hug.static("/")
+def get_static():
+    return "/root/workspace/Chaos/server/",
+
+
 @hug.get("/", output=hug.output_format.html)
 def render_index():
     return index_content
@@ -50,3 +55,12 @@ def get_meritocracy(amount: hug.types.number = 20):
         return meritocracy
     except:
         __log.exception("Failed to read meritocracy!")
+
+
+def exit_handler():
+    __log.info("Received SIGTERM, exiting.")
+    sys.stdout.flush()
+    sys.stderr.flush()
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, exit_handler)
