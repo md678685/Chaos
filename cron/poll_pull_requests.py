@@ -20,6 +20,7 @@ def poll_pull_requests():
     # get voting window
     now = arrow.utcnow()
     voting_window = gh.voting.get_initial_voting_window(now)
+    __log.info("initial voting window: " + repr(voting_window));
 
     # get all ready prs (disregarding of the voting window)
     prs = gh.prs.get_ready_prs(api, settings.URN, 0)
@@ -70,8 +71,9 @@ def poll_pull_requests():
                 gh.prs.label_pr(api, settings.URN, pr_num, ["accepted"])
 
                 # chaosbot rewards merge owners with a follow
-                pr_owner = pr["user"]["login"]
-                gh.users.follow_user(api, pr_owner)
+                # [DBP: I think this requires a PAT with such permissions]
+                # pr_owner = pr["user"]["login"]
+                # gh.users.follow_user(api, pr_owner)
 
                 needs_update = True
 
