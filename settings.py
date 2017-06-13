@@ -41,13 +41,13 @@ PULL_REQUEST_POLLING_INTERVAL_SECONDS = 30
 ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 60 * 10  # 10 min window on polling comments
 
 # The default number of hours for how large the voting window is
-DEFAULT_VOTE_WINDOW = 0.05
+DEFAULT_VOTE_WINDOW = 0.025
 
 # The maximum number of hours for how large the voting window is (extended window)
 EXTENDED_VOTE_WINDOW = 9.0
 
 # The number of hours for how large the voting window is in the "after hours"
-AFTER_HOURS_VOTE_WINDOW = 0.05
+AFTER_HOURS_VOTE_WINDOW = 0.025
 
 # The hour (in the server time zone) when the after hours start
 AFTER_HOURS_START = 22
