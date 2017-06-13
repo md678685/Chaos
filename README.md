@@ -4,7 +4,7 @@ test
 
 [![Build Status](https://travis-ci.org/chaosbot/Chaos.svg?branch=master)](https://travis-ci.org/chaosbot/Chaos)
 [![Gitter chat](https://badges.gitter.im/chaosthebot/gitter.svg)](https://gitter.im/chaosthebot/Lobby)
-[![ChaosBot](https://img.shields.io/badge/Chaos-Bot-green.svg)](http://chaosthebot.com/)
+[![ChaosBot](https://img.shields.io/badge/Chaos-Bot-green.svg)](http://chaosbot.org/)
 
 > Chaos, the vacant and infinite space which existed according to the ancient
 > cosmogonies previous to the creation of the world, and out of which the gods,
@@ -94,7 +94,7 @@ supervisor completely.
 * **It has root access on its server.**  This means you are able to install
 packages and perform other privileged operations, provided you can initiate those
 changes through a pull request.
-* **Its domain name is [chaosthebot.com](http://chaosthebot.com)**.
+* **Its domain name is [chaosbot.org](http://chaosbot.org)**.
 * **It's hosted on a low-tier machine in the cloud.**  This means there aren't a
 ton of resources available to it: 2TB network transfer, 30GB storage, 2GB memory,
 and 1 CPU core.  Try not to deliberately DoS it.

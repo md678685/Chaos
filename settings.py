@@ -31,7 +31,7 @@ else:
 URN = misc.get_self_urn()
 GITHUB_USER, GITHUB_REPO = URN.split("/")
 
-HOMEPAGE = "http://chaosthebot.com"
+HOMEPAGE = "http://chaosbot.org"
 
 # TEST SETTING PLEASE IGNORE
 TEST = False
