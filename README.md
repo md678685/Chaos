@@ -1,6 +1,6 @@
 # ChaosBot
 
-test
+GRAND THEFT BOTO
 
 [![Build Status](https://travis-ci.org/chaosbot/Chaos.svg?branch=master)](https://travis-ci.org/chaosbot/Chaos)
 [![Gitter chat](https://badges.gitter.im/chaosthebot/gitter.svg)](https://gitter.im/chaosthebot/Lobby)
