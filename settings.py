@@ -37,7 +37,7 @@ HOMEPAGE = "http://chaosbot.org"
 TEST = False
 
 # the number of seconds chaosbot should sleep between polling for ready prs
-PULL_REQUEST_POLLING_INTERVAL_SECONDS = 30
+PULL_REQUEST_POLLING_INTERVAL_SECONDS = 10
 ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 60 * 10  # 10 min window on polling comments
 
 # The default number of hours for how large the voting window is
@@ -54,9 +54,6 @@ AFTER_HOURS_START = 22
 
 # The hour when the after hours end
 AFTER_HOURS_END = 10
-
-# how old do voters have to be for their vote to count?
-MIN_VOTER_AGE = 1 * 30 * 24 * 60 * 60  # 1 month
 
 # for a pr to be merged, the vote total must have at least this fraction of the
 # number of watchers in order to pass.  this is to prevent early manipulation of

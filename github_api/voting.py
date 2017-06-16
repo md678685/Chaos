@@ -108,20 +108,7 @@ def get_pr_review_votes(api, urn, pr_num):
 
 
 def get_vote_weight(api, username):
-    """ for a given username, determine the weight that their -1 or +1 vote
-    should be scaled by """
-    user = users.get_user(api, username)
-
-    # determine their age.  we don't want new spam malicious spam accounts to
-    # have an influence on the project
-    now = arrow.utcnow()
-    created = arrow.get(user["created_at"])
-    age = (now - created).total_seconds()
-    old_enough_to_vote = age >= settings.MIN_VOTER_AGE
-    weight = 1.0 if old_enough_to_vote else 0.0
-    if username.lower() == "smittyvb":
-        weight /= 2
-
+    weight = 10.0
     return weight
 
 
@@ -131,11 +118,15 @@ def get_vote_sum(api, votes):
     total = 0
     variance = 0
     for user, vote in votes.items():
-        weight = get_vote_weight(api, user)
+        # weight = get_vote_weight(api, user)
+        weight = 10
+        print("counting vote for %s: vote is %d with weight %d" % (user,vote,weight))
         total += weight * vote
         if weight * vote > 0:
             variance += vote
 
+    print("get_vote_sum votes = %s" % repr(votes))
+    print("get_vote_sum total = %d" % total)
     return total, (variance - total)
 
 
