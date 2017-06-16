@@ -1,3 +1,2 @@
 #!/bin/sh
-supervisorctl reread
-supervisorctl restart chaos
+python3 chaos.py
