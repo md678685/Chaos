@@ -15,3 +15,4 @@ server/voters.json
 server/issue_commands_ran.json
 api_cache/**
 ansible/**
+hardcopy.*

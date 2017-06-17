@@ -7,10 +7,11 @@ canvas.height = 200;
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = fg;
-ctx.font = "bold 100px arial";
+ctx.font = "bold 30px courier";
 ctx.textAlign = "center";
 ctx.textBaseline = "middle";
-ctx.fillText("CHAOS", canvas.width / 2, canvas.height / 2);
+ctx.fillText("84848 System:", canvas.width / 2, canvas.height / 3);
+ctx.fillText("The Social Experiment", canvas.width / 2, canvas.height * 2 / 3);
 
 var char_location = []
 var pix_location = [];

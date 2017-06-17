@@ -79,7 +79,10 @@ class API(object):
         except KeyError:
             pass
 
-        resp.raise_for_status()
+        try:
+            resp.raise_for_status()
+        except:
+            log.info("request %s %s %s raised a status" % (repr(method), repr(path), repr(kwargs)))
 
         # not all requests return json, and this will raise for those
         try:
