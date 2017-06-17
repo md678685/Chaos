@@ -301,4 +301,6 @@ def post_status(api, urn, sha, state, description):
         "description": description,
         "context": "chaosbot"
     }
+    print("applying label %s : %s to github.com%s" % (state,description,path))
+    print("applying label data = %s" % repr(data))
     api("POST", path, json=data)
