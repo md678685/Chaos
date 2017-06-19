@@ -108,7 +108,10 @@ def get_pr_review_votes(api, urn, pr_num):
 
 
 def get_vote_weight(api, username):
-    weight = -10.0
+    if username in ["dbpokorny", "anythingbot", "chaosbotgroup"]:
+        weight = 0.0
+    else:
+        weight = 10.0
     return weight
 
 
