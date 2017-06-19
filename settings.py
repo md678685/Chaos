@@ -37,17 +37,17 @@ HOMEPAGE = "http://chaosbot.org"
 TEST = False
 
 # the number of seconds chaosbot should sleep between polling for ready prs
-PULL_REQUEST_POLLING_INTERVAL_SECONDS = 10
-ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 60 * 10  # 10 min window on polling comments
+PULL_REQUEST_POLLING_INTERVAL_SECONDS = 2
+ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 10  # 10 min window on polling comments
 
 # The default number of hours for how large the voting window is
-DEFAULT_VOTE_WINDOW = 0.025
+DEFAULT_VOTE_WINDOW = 0
 
 # The maximum number of hours for how large the voting window is (extended window)
-EXTENDED_VOTE_WINDOW = 9.0
+EXTENDED_VOTE_WINDOW = 0.025
 
 # The number of hours for how large the voting window is in the "after hours"
-AFTER_HOURS_VOTE_WINDOW = 0.025
+AFTER_HOURS_VOTE_WINDOW = 0
 
 # The hour (in the server time zone) when the after hours start
 AFTER_HOURS_START = 22
@@ -79,6 +79,6 @@ with open("description.txt", "r") as h:
 
 # PRs that have merge conflicts and haven't been touched in this many hours
 # will be closed
-PR_STALE_HOURS = 36
+PR_STALE_HOURS = 0
 
 API_COOLDOWN_RESET_PADDING = 30
