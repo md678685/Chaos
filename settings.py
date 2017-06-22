@@ -37,8 +37,8 @@ HOMEPAGE = "http://chaosbot.org"
 TEST = False
 
 # the number of seconds chaosbot should sleep between polling for ready prs
-PULL_REQUEST_POLLING_INTERVAL_SECONDS = 10
-ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 10  # 10 min window on polling comments
+PULL_REQUEST_POLLING_INTERVAL_SECONDS = 300
+ISSUE_COMMENT_POLLING_INTERVAL_SECONDS = 300
 
 # The default number of hours for how large the voting window is
 DEFAULT_VOTE_WINDOW = 0.025
