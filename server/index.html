@@ -99,8 +99,31 @@ function loaded() {
     setInterval(function () { clearHello(); chaosbot(); },1000);
 
     var elt = document.getElementById("videoContainer");
-    var offset = Math.trunc(Date.now() / 1000) % (3 * 60 + 3);
-    elt.innerHTML = '<iframe width="360" height="215" src="https://www.youtube.com/embed/3y5DWFYnBNg?start=' + offset + '&autoplay=1" frameborder="0" allowfullscreen></iframe>';
+    var lengths = [[0,3,3],[0,2,24]];
+    var indexes = [];
+    var totalSeconds = 0;
+    var i;
+    for (i = 0; i < lengths.length; i += 1) {
+        var itemLength = lengths[i];
+        totalSeconds += itemLength[0] * 60 * 60 + itemLength[1] * 60 + itemLength[2];
+        indexes.push(totalSeconds);
+    }
+    var offset = Math.trunc(Date.now() / 1000) % totalSeconds;
+    var itemNumber = 0;
+    var secondsRemaining = indexes[0];
+    for (i = 0; i < lengths.length; i += 1) {
+        if (offset < indexes[i]) {
+            itemNumber = i;
+            secondsRemaining = indexes[i] - offset;
+            if (i > 0) {
+                offset -= indexes[i-1];
+            }
+            break;
+        }
+    }
+    var vids = ['3y5DWFYnBNg','ap5Wlfl5rYI'];
+    elt.innerHTML = '<iframe width="360" height="215" src="https://www.youtube.com/embed/' + vids[itemNumber] + '?start=' + offset + '&autoplay=1" frameborder="0" allowfullscreen></iframe>';
+    setTimeout(function () { location = location; }, secondsRemaining * 1000);
     // var elt = document.getElementById("videoContainer");
     // elt.innerHTML = '<iframe width="360" height="215" src="https://www.youtube.com/embed/J9JrAQIZqXk?start=2000&autoplay=1" frameborder="0" allowfullscreen></iframe>';
 }
@@ -119,7 +142,7 @@ function loaded() {
                 <div class="card-content main has-text-centered">
                     <div id="helloContainer"></div>
                     <div class="content-title header">
-                        <h1 class="title"><strong>Hello, Chaos!</strong></h1>
+                        <h1 class="title"><strong>Hello, Logrus!</strong></h1>
                     </div>
                     <div id="videoContainer"></div>
                     <div class="notification" id="notifbox" hidden="true">
