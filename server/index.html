@@ -51,6 +51,26 @@ function clearHello() {
     }
 }
 
+function botInitDate() {
+    var init = new Date();
+    init.setMilliseconds(0);
+    init.setSeconds(0);
+    init.setMinutes(0);
+    init.setHours(17);
+    init.setMonth(5);
+    init.setDate(21);
+    init.setYear(2017);
+    return init;
+}
+
+// return the number of seconds into the current period
+function botPeriod() {
+    var periodMilliseconds = 8 * 60 * 60 * 1000;
+    var periodIndex = ((new Date()) - botInitDate()) / periodMilliseconds;
+    var periodFraction = periodIndex - Math.trunc(periodIndex);
+    return Math.trunc(periodFraction * periodMilliseconds / 1000);
+}
+
 function chaosbot() {
     var periodNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
     var now = new Date();
@@ -74,23 +94,29 @@ function chaosbot() {
         nowHours = "" + nowHours;
     }
     updateHello("" + nowHours + ":" + nowMinutes + " " + nowAMPM);
-    var init = new Date();
-    init.setMilliseconds(0);
-    init.setSeconds(0);
-    init.setMinutes(0);
-    init.setHours(17);
-    init.setMonth(5);
-    init.setDate(21);
-    var roundMilliseconds = 104 * 60 * 60 * 1000;
-    var offset = 0;
-    if (now - init <= 0) {
-        now.setTime(now.getTime() + roundMilliseconds);
-        offset -= 1;
-    }
-    var roundIndex = (now - init) / roundMilliseconds;
+    var roundMilliseconds = 13 * 8 * 60 * 60 * 1000;
+    var roundIndex = (now - botInitDate()) / roundMilliseconds;
     var periodIndex = 13 * (roundIndex - Math.trunc(roundIndex));
     var fractionalPeriod = 1000 * (periodIndex - Math.trunc(periodIndex));
-    updateHello("Round " + (offset + Math.trunc(roundIndex)));
+    var periodLabels = [['a','A'], ['b','B'], ['c','C'], ['d','D'], ['e','E'],
+        ['f','F'], ['g','G'], ['h','H'], ['i','I'], ['j','J'], ['k','K'],
+        ['l','L'], ['m','M']];
+    var marquee = [];
+    var i;
+    for (i = 0; i < periodLabels.length; i += 1) {
+        if (i == 1 || i == 7) {
+            marquee.push(" . ");
+        } else if (i > 0) {
+            marquee.push(" ");
+        }
+        if (i == Math.trunc(periodIndex)) {
+            marquee.push(periodLabels[i][1]);
+        } else {
+            marquee.push(periodLabels[i][0]);
+        }
+    }
+    updateHello(marquee.join(""));
+    updateHello("Round " + Math.trunc(roundIndex));
     updateHello("Period " + periodNames[Math.trunc(periodIndex)]);
     updateHello("Fractional Period " + Math.trunc(fractionalPeriod) + " (1000)");
 }
@@ -99,7 +125,8 @@ function loaded() {
     setInterval(function () { clearHello(); chaosbot(); },1000);
 
     var elt = document.getElementById("videoContainer");
-    var lengths = [[0,3,3],[0,2,24]];
+    var vids =    ['Cbb0JppubDY', 'fU5oSXAoaa0', '3y5DWFYnBNg', 'ap5Wlfl5rYI'];
+    var lengths = [[0,30,6],      [0,25,22],     [0,3,3],       [0,2,24]];
     var indexes = [];
     var totalSeconds = 0;
     var i;
@@ -108,7 +135,7 @@ function loaded() {
         totalSeconds += itemLength[0] * 60 * 60 + itemLength[1] * 60 + itemLength[2];
         indexes.push(totalSeconds);
     }
-    var offset = Math.trunc(Date.now() / 1000) % totalSeconds;
+    var offset = botPeriod() % totalSeconds;
     var itemNumber = 0;
     var secondsRemaining = indexes[0];
     for (i = 0; i < lengths.length; i += 1) {
@@ -121,7 +148,6 @@ function loaded() {
             break;
         }
     }
-    var vids = ['3y5DWFYnBNg','ap5Wlfl5rYI'];
     elt.innerHTML = '<iframe width="360" height="215" src="https://www.youtube.com/embed/' + vids[itemNumber] + '?start=' + offset + '&autoplay=1" frameborder="0" allowfullscreen></iframe>';
     setTimeout(function () { location = location; }, secondsRemaining * 1000);
     // var elt = document.getElementById("videoContainer");
